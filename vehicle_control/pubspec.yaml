@@ -1,0 +1,55 @@
+name: vehicle_control
+description: A Flutter IoT app with Firebase, notifications, anomaly detection, and real-time monitoring.
+
+publish_to: 'none' # Prevents accidental publishing
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Firebase dependencies
+  firebase_core: ^3.12.1
+  firebase_auth: ^5.5.1
+  cloud_firestore: ^5.6.5
+  firebase_messaging: ^15.2.4
+  firebase_database: ^11.3.4
+
+  # State management & utilities
+  provider: ^6.1.2
+  shared_preferences: ^2.5.2
+
+  # UI & Design
+  flutter_local_notifications: ^18.0.1
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
+  fl_chart: ^0.63.0 # For charts in dashboard
+
+  # Networking & APIs
+  http: ^1.3.0
+
+  # Sensor & IoT Communication (if needed)
+  mqtt_client: ^10.5.1
+  font_awesome_flutter: ^10.8.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
