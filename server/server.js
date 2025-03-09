@@ -26,7 +26,7 @@ const PORT = process.env.PORT || 5000;
 app.post('/upload-realtime', async (req, res) => {
     try {
         const data = req.body;
-        console.log("📥 Sensor Data Received:", data);
+        // console.log("📥 Sensor Data Received:", data);
 
         if (!data || typeof data !== 'object') {
             return res.status(400).json({ error: "Invalid data format. Expected an object." });
@@ -79,12 +79,6 @@ app.post('/update-ignition', async (req, res) => {
         await ignitionRef.update({
             ignition: ignition,
             timestamp: admin.database.ServerValue.TIMESTAMP
-        });
-
-        // **🔥 Store in Firestore**
-        await db.collection('vehicle_status').add({
-            ignition: ignition,
-            timestamp: admin.firestore.FieldValue.serverTimestamp()
         });
 
         res.json({ message: `✅ Ignition status updated: ${ignition}` });
