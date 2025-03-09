@@ -16,7 +16,7 @@ firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://veh-pa-default-rtdb.firebaseio.com/'
 })
 db_firestore = firestore.client()
-db_realtime = db.reference("maintenance_alerts")
+db_realtime = db.reference()
 collection_name = "vehicle_data"
 
 # ---------------------------
@@ -121,31 +121,42 @@ def trigger_maintenance_alert(predictions, anomalies):
     if anomalies is not None and not anomalies.empty:
         anomaly_message = "🚨 Anomaly detected! Check engine health."
     
-    db_realtime.update({
+    db_realtime.child("maintenance_alerts").update({
         "engine_alert": engine_message,
         "anomaly_alert": anomaly_message
     })
     print("\n✅ Alerts updated in Realtime Database")
 
 # ---------------------------
-# 🔄 Firestore Listener
+# 🔄 Realtime Database Listener for Ignition
 # ---------------------------
-def firestore_listener(doc_snapshot, changes, read_time):
-    print("\n🔥 New data detected! Fetching latest records...")
-    df = fetch_latest_data()
-    if df is not None:
-        print("\n📊 Running LSTM Prediction...")
-        forecast_df = predict_future_values(df)
-        if forecast_df is not None:
-            df["Carbon Deposit Level"] = forecast_df["predicted_carbon_deposit"]
-            print("\n🚨 Running Anomaly Detection...")
-            anomalies = detect_anomalies(df)
-            print("\n🔔 Checking for Maintenance Alerts...")
-            trigger_maintenance_alert(forecast_df, anomalies)
+def ignition_listener(event):
+    """ Callback function triggered when ignition status changes """
+    print("\n🔥 Ignition status changed:", event.data)
 
-doc_ref = db_firestore.collection(collection_name)
-doc_ref.on_snapshot(firestore_listener)
+    if event.data:  # If ignition is ON
+        print("\n📊 Fetching latest sensor data...")
+        df = fetch_latest_data()
+        
+        if df is not None:
+            print("\n🔮 Running LSTM Prediction...")
+            forecast_df = predict_future_values(df)
+            
+            if forecast_df is not None:
+                df["Carbon Deposit Level"] = forecast_df["predicted_carbon_deposit"]
+                print("\n🚨 Running Anomaly Detection...")
+                anomalies = detect_anomalies(df)
+                print("\n🔔 Checking for Maintenance Alerts...")
+                trigger_maintenance_alert(forecast_df, anomalies)
+    else:
+        print("\n🛑 Ignition OFF - No processing needed.")
 
-print("\n🔍 Listening for updates in Firestore...\n")
+# Attach listener to Firebase Realtime Database
+ignition_ref = db_realtime.child("vehicle_status/ignition")
+ignition_ref.listen(ignition_listener)
+
+print("\n🔍 Listening for ignition status updates in Realtime Database...\n")
+
+# Keep script running
 while True:
     time.sleep(10)
