@@ -6,7 +6,7 @@ const cors = require('cors');
 const fs = require('fs');
 
 // Initialize Firebase Admin SDK
-const serviceAccount = JSON.parse(fs.readFileSync('serviceAccountKey.json', 'utf8'));
+const serviceAccount = JSON.parse(fs.readFileSync('/etc/secrets/serviceAccountKey.json', 'utf8'));
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
