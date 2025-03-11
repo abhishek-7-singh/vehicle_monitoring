@@ -1,0 +1,82 @@
+# ---------------------------------
+# 💻 Node.js / NPM / Yarn
+# ---------------------------------
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.npm/
+.npmrc
+
+# ---------------------------------
+# 🐍 Python / Conda
+# ---------------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+*.env
+*.venv
+Pipfile
+Pipfile.lock
+poetry.lock
+requirements.txt
+conda-meta/
+*.conda
+*.egg-info/
+*.whl
+
+# ---------------------------------
+# ⚙️ VS Code / JetBrains / IDEs
+# ---------------------------------
+.vscode/
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# ---------------------------------
+# 📂 Logs / OS Files / Miscellaneous
+# ---------------------------------
+logs/
+*.log
+*.out
+*.pid
+*.gz
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------------------------------
+# 🔥 Firebase / Secrets
+# ---------------------------------
+serviceAccountKey.json
+firebase-debug.log
+firebase-debug.*.log
+.firebaserc
+
+# ---------------------------------
+# 📁 Build / Temporary Files
+# ---------------------------------
+build/
+dist/
+out/
+.cache/
+coverage/
+tmp/
+temp/
+
+# ---------------------------------
+# 🚀 Docker / Cloud Services
+# ---------------------------------
+docker-compose.override.yml
+.dockerignore
+terraform.tfstate*
+.terraform/
