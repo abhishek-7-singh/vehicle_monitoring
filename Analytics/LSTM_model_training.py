@@ -15,11 +15,11 @@ df = pd.read_csv('/kaggle/working/time_series_data.csv')
 features = ['CO', 'NOx', 'HC_NOx', 'PM', 'Vibration', 'ExhaustTemp']
 target = ['Carbon Deposit Level']
 
-# 🔹 **Separate Feature and Target Scalers**
+#  **Separate Feature and Target Scalers**
 scaler_features = MinMaxScaler()
 scaler_target = MinMaxScaler()
 
-# 🔹 **Fit and Transform**
+#  **Fit and Transform**
 df[features] = scaler_features.fit_transform(df[features])
 df[target] = scaler_target.fit_transform(df[target])
 
@@ -114,7 +114,7 @@ for epoch in range(num_epochs):
 
 # 🔹 **Save Model**
 torch.save(model.state_dict(), "/kaggle/working/carbon_lstm_model.pth")
-print("✅ Model training completed and saved!")
+print(" Model training completed and saved!")
 
 # 🔹 **Load Model & Evaluate**
 model.eval()
@@ -149,8 +149,8 @@ precision = precision_score(y_test, y_pred_rounded, average='weighted', zero_div
 recall = recall_score(y_test, y_pred_rounded, average='weighted', zero_division=1)
 
 print(f"\n📊 **Evaluation Metrics:**")
-print(f"🔹 Mean Squared Error (MSE): {mse:.4f}")
-print(f"🔹 Root Mean Squared Error (RMSE): {rmse:.4f}")
-print(f"🔹 Accuracy: {accuracy:.4f}")
-print(f"🔹 Precision: {precision:.4f}")
-print(f"🔹 Recall: {recall:.4f}")
+print(f" Mean Squared Error (MSE): {mse:.4f}")
+print(f" Root Mean Squared Error (RMSE): {rmse:.4f}")
+print(f" Accuracy: {accuracy:.4f}")
+print(f"Precision: {precision:.4f}")
+print(f"Recall: {recall:.4f}")
