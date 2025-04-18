@@ -107,6 +107,27 @@ graph TD;
   AI_Model -->|Predicts Carbon Buildup| Dashboard;
   Dashboard -->|Displays Alerts & Trends| User;
 ```
+<h3 align="center">📊 Dashboard Snapshots</h3>
+
+<p align="center">
+  <img src="images/d1.jpeg" alt="Dashboard 1" width="30%" style="margin: 5px;"/>
+  <img src="images/d2.jpeg" alt="Dashboard 2" width="30%" style="margin: 5px;"/>
+  <img src="images/d3.jpeg" alt="Dashboard 3" width="30%" style="margin: 5px;"/>
+</p>
+
+<p align="center">
+  <img src="images/d4.jpeg" alt="Dashboard 4" width="30%" style="margin: 5px;"/>
+  <img src="images/d5.jpeg" alt="Dashboard 5" width="30%" style="margin: 5px;"/>
+  <img src="images/d6.jpeg" alt="Dashboard 6" width="30%" style="margin: 5px;"/>
+</p>
+
+<hr/>
+
+<h3 align="center">🛠️ Implementation Snapshot</h3>
+
+<p align="center">
+  <img src="images/IMG_6999.JPG" alt="Implementation" width="60%" style="margin: 10px;"/>
+</p>
 
 ## 🛠 Future Improvements
 - 🔄 **Enhanced Sensor Calibration** for more accurate readings.
