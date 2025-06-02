@@ -1,5 +1,8 @@
 # 🚗 IoT-Based Predictive Maintenance for Vehicle Engines
 
+## Authors: Abhishek Singh & Sri Ganesan M
+### VELLORE INSTITUTE OF TECHNOLOGY, CHENNAI
+
 ## 📌 Overview
 This project is an **Engine-Carbon-Deposition-Prediction-Predictive-Analytics** designed to estimate **carbon buildup in vehicle engines** using **low-cost sensors and AI-driven trend analysis**. Instead of relying on OBD-II data, this system collects exhaust gas composition, vibration, and temperature data to **predict carbon deposits**, helping users take preventive maintenance actions before engine performance is affected.
 
